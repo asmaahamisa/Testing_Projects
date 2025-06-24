@@ -1,2 +1,11 @@
-pytest --html=report.html
-pytest test_Scenario1.py --html=report.html --self-contained-html --log-cli-level=INFO
+
+for generating test report for each test separate use this :
+/////////////
+TestCases/test_SignUp.py --html=Reports/SignUp_report.htm
+/////////////
+for generating test report for all the test cases use this 
+////////////
+Full detailed test report
+pytest TestCases/ --html=reports/full_test_report.html --self-contained-html -v
+
+pytest --html=reports/report.html

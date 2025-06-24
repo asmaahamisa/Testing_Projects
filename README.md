@@ -4,12 +4,12 @@
 
 This project automates two important user actions on a web application:
 
-Test_Scenario1: Verifying user registration
-Test_Scenario2: Verifying product purchase
+test_1SignUP: Verifying user registration
+Test_2AddToCart: Verifying product purchase
 
 **It is built using Selenium WebDriver with Python, and simulates how a real user would interact with the website.
 
-*******Test_Scenario1 – User Registration*********
+*******test_1SignUP – User Registration*********
 This test simulates a user signing up on the website.
 
 🔹 Steps Automated:
@@ -21,11 +21,11 @@ This test simulates a user signing up on the website.
 
 🎥 Video Demonstration:
 check this path and click view raw
-https://github.com/asmaahamisa/Testing_Projects/blob/main/2_WebVideos/Web_Auto1.mp4
+https://github.com/asmaahamisa/Testing_Projects/blob/main/WebVideos/1-SignUp.mp4
 
 ///////////////////////////////////////////////////////////////////
 
-*********Test_Scenario2 – Purchase Two Products*********
+*********test_2AddToCart – Purchase Two Products*********
 This test simulates a user buying two products.
 
 🔹 Steps Automated:
@@ -37,7 +37,7 @@ This test simulates a user buying two products.
 
 🎥 Video Demonstration:
 check this path and click view raw
-https://github.com/asmaahamisa/Testing_Projects/blob/main/2_WebVideos/Web_Auto2.mp4
+https://github.com/asmaahamisa/Testing_Projects/blob/main/WebVideos/2-AddToCart.mp4
 
 🛠 Tools and Environment
 
@@ -50,11 +50,13 @@ Google Chrome	Browser used for testing the website
 ▶️ How to Run the Tests
 You can run the automation scripts in two ways:
 
-🔹 Option 1: From VS Code (What I Used)
+🔹 Option 1: From VS Code (What I Used) 
 Open the project folder in Visual Studio Code
 Open the test file (e.g., test_Scenario1.py)
 
 Click the green ▶ Run button at the top-right of the editor window
+
+// if use this way make sure you are adding at the end of the test case the manual call function
 
 The test will execute and open the browser automatically
 
@@ -62,8 +64,12 @@ The test will execute and open the browser automatically
 
 🔹 Option 2: From the Terminal (Alternative)
 If you prefer to run from the terminal:
-python test_Scenario1.py
-python test_Scenario2.py
+
+// by using this way you will generate also the test report 
+
+TestCases/test_1SignUp.py --html=Reports/SignUp_report.html --self-contained-html   
+TestCases/test_2AddToCart.py --html=Reports/AddToCart_Report.html --self-contained-html
+
 
 Author
 Name: Asmaa Hamisa

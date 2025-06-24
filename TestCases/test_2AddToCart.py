@@ -12,22 +12,22 @@ import os
 import pytest
 import logging
 
-def test_Scenario2():
+def test_2AddToCart():
 # Initialize the WebDriver
    driver = webdriver.Chrome()
-   driver.set_page_load_timeout(15)
-   driver.implicitly_wait(5)
+   #driver.set_page_load_timeout(15)
+   #driver.implicitly_wait(5)
 
    logging.basicConfig(level=logging.INFO)
    logger = logging.getLogger(__name__)  
-
 
 # Open the website
    driver.get("https://practice-react.sdetunicorns.com/")
    driver.maximize_window()
    print(driver.title)
    logger.info("Practice with React | SDET Unicorns Test Site")
-
+   assert "Practice with React | SDET Unicorns Test Site"
+    
    try:
 # Step 1: Click on "Login" button in the header
        user_profile_button = WebDriverWait(driver, 20).until(
@@ -51,11 +51,11 @@ def test_Scenario2():
        email_field = WebDriverWait(driver, 30).until(
         EC.visibility_of_element_located((By.ID, "email"))
     )
-       email_field.send_keys("asmaahamisa6@gmail.com")
+       email_field.send_keys("WebAutol19@gmail.com")
        print("Email filled!")
 
        password_field = driver.find_element(By.ID, "password")
-       password_field.send_keys("Password12345")
+       password_field.send_keys("Password123454")
 
        print("Email and password are filled")
        logger.info("Email and password are filled")
@@ -520,4 +520,4 @@ def test_Scenario2():
    return True
 
 # Calling the function for execution
-test_Scenario2()
+#test_2AddToCart()

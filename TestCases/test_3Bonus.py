@@ -10,6 +10,10 @@ from selenium.common.exceptions import WebDriverException
 from decimal import Decimal
 import os
 import pytest
+
+
+
+
 import logging
 import re
 import requests
@@ -17,7 +21,7 @@ import requests
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)  
 
-def test_Bonus():
+def test_3Bonus():
 # Initialize the WebDriver
    driver = webdriver.Chrome()
    driver.set_page_load_timeout(15)
@@ -131,7 +135,7 @@ def test_Bonus():
       return cart_item_texts
 
 # Call the function and store the returned list
-cart_items_list = test_Bonus()
+cart_items_list = test_3Bonus()
 cart_items_list_formatted = [re.search(r"ORDER:\s(\w+)", item).group(1) for item in cart_items_list]
 
 #print("List of cart items:", cart_items_list)

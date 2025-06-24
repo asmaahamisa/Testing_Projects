@@ -1,3 +1,4 @@
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -5,12 +6,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support.ui import Select
 import time
-import pytest
 import logging
 
 
+
 # Initialize the WebDriver
-def test_Scenario1():
+def test_1SignUp():
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)  
     
@@ -36,27 +37,32 @@ def test_Scenario1():
     
 
         user_profile_button = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='root']/header/div[2]/div[1]/div/div[3]/div/div[2]/button/i"))
-    )
+        EC.presence_of_element_located((By.CLASS_NAME, "pe-7s-user-female"))
+        )
+
+      #  user_profile_button = WebDriverWait(driver, 20).until(
+       # EC.presence_of_element_located((By.XPATH, "//*[@id='root']/header/div[2]/div[1]/div/div[3]/div/div[2]/button/i"))
+     #)
 
     # adding additional time 
-        driver.implicitly_wait(10)
+       # driver.implicitly_wait(10)
         user_profile_button.click()
     
-
         print("User Profile button found and clicked!")
         logger.info("User Profile button found and clicked!")
+
         assert True
         time.sleep(1)
     # 2. Click on 'Register' button
 
-        register_button = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='root']/header/div[2]/div[1]/div/div[3]/div/div[2]/div/ul/li[2]/a"))   
+        register_button = WebDriverWait(driver, 30).until(
+        EC.presence_of_element_located((By.LINK_TEXT,"Register"))   
     )
 
-        driver.implicitly_wait(10)
+       # driver.implicitly_wait(10)
         time.sleep(1)
         register_button.click()
+
         print("Register button clicked!")
         logger.info("Register button clicked!")
         assert True
@@ -67,7 +73,7 @@ def test_Scenario1():
         username_field = WebDriverWait(driver, 30).until(
         EC.visibility_of_element_located((By.ID, "username"))
     )
-        username_field.send_keys("Asmaa_Hamisa_00002")
+        username_field.send_keys("WebAuto_1")
         print("Username filled!")
         logger.info("Username filled!")
         assert True
@@ -76,7 +82,7 @@ def test_Scenario1():
         email_field = WebDriverWait(driver, 30).until(
         EC.visibility_of_element_located((By.ID, "email"))
     )
-        email_field.send_keys("asmaahamisl0002@gmail.com")
+        email_field.send_keys("WebAutol19@gmail.com")
         print("Email filled")
         logger.info("Email filled")
         assert True
@@ -106,8 +112,12 @@ def test_Scenario1():
     # Submit the registration form
 
 
-        submit_button = driver.find_element(By.XPATH, "//*[@id='root']/div/div/form/button")
-        driver.implicitly_wait(10)
+        submit_button = WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//*[@id='root']/div/div/form/button"))
+
+        )
+
+        time.sleep(1)
         submit_button.click()
 
         print("Registration form submitted!")
@@ -117,18 +127,22 @@ def test_Scenario1():
     # 4. Validate that user profile contains button logout
 
         user_profile_button = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='root']/header/div[2]/div[1]/div/div[3]/div/div[2]/button/i"))
+        EC.presence_of_element_located((By.CLASS_NAME, "pe-7s-user-female"))
     )   
 
-        driver.implicitly_wait(10)
+        
         user_profile_button.click()
 
         print("User Profile button found and clicked again")
         logger.info("User Profile button found and clicked again")
         assert True
 
+
+       
+       
+       # using relative XPATH here to be more readable 
         logout_button = WebDriverWait(driver, 30).until(
-        EC.visibility_of_element_located((By.XPATH, "//*[@id='root']/header/div[2]/div[1]/div/div[3]/div/div[2]/div/ul/li[2]"))
+        EC.visibility_of_element_located((By.XPATH, "//li[normalize-space()='Logout']"))
     )
         Validation = "Validated"
         if logout_button:
@@ -150,11 +164,10 @@ def test_Scenario1():
         print(f"An unexpected error occurred: {e}")
    
 
-
     finally:
 
       time.sleep(2)
       driver.quit()
     return Validation
 # Calling the function for execution
-test_Scenario1()
+#test_SignUp()
